@@ -4,12 +4,12 @@ abstract class ThemeState extends Equatable {}
 
 class InitialState extends ThemeState {
   @override
-  List<Object> get props => [];
+  List<ThemeModel> get props => [initialThemeLight];
 }
 
 class LoadingState extends ThemeState {
   @override
-  List<Object> get props => [];
+  List<ThemeModel> get props => [initialThemeLight];
 }
 
 class LoadedState extends ThemeState {
@@ -18,10 +18,10 @@ class LoadedState extends ThemeState {
   final ThemeModel theme;
 
   @override
-  List<Object> get props => [theme];
+  List<ThemeModel> get props => [theme];
 }
 
 class ErrorState extends ThemeState {
   @override
-  List<Object> get props => [];
+  List<ThemeModel> get props => [initialThemeLight];
 }

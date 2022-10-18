@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xadiag/models/theme_model.dart';
+import 'package:xadiag/models/theme_state.dart';
 import '../theme.dart';
 
 class ThemePage extends StatelessWidget {
@@ -8,13 +8,29 @@ class ThemePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeModel>(
+    return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
-        return MaterialApp(
-          theme: state.themeData,
-          debugShowCheckedModeBanner: false,
-          home: const ThemeView(),
-        );
+        if (state is LoadingState) {
+          return MaterialApp(
+            theme: state.props.first.themeData,
+            debugShowCheckedModeBanner: false,
+            home: const ThemeView(),
+          );
+        } else if (state is ErrorState) {
+          return MaterialApp(
+            theme: state.props.first.themeData,
+            debugShowCheckedModeBanner: false,
+            home: const ThemeView(),
+          );
+        } else if (state is LoadedState) {
+          return MaterialApp(
+            theme: state.props.first.themeData,
+            debugShowCheckedModeBanner: false,
+            home: const ThemeView(),
+          );
+        } else {
+          return Container();
+        }
       },
     );
   }

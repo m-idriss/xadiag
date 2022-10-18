@@ -3,10 +3,8 @@ import 'models/models.dart';
 import 'theme/theme.dart';
 
 class ThemeApp extends StatelessWidget {
-  final ThemeModel themeModel;
   const ThemeApp({
     super.key,
-    required this.themeModel,
   });
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'models.dart';
 
-class ThemeCubit extends Cubit<ThemeModel> {
-  ThemeCubit({required this.repository}) : super(initialThemeLight) {
+class ThemeCubit extends Cubit<ThemeState> {
+  ThemeCubit({required this.repository}) : super(InitialState()) {
     getThemes();
   }
 
@@ -10,12 +10,17 @@ class ThemeCubit extends Cubit<ThemeModel> {
   late List<ThemeModel> themes = <ThemeModel>[];
 
   void getThemes() async {
-    themes = await repository.getThemes();
-    emit(currentTheme);
+    try {
+      emit(LoadingState());
+      themes = await repository.getThemes();
+      emit(LoadedState(themes.first));
+    } catch (e) {
+      emit(ErrorState());
+    }
   }
 
   void changeTheme(ThemeModel them) {
     currentTheme = them;
-    emit(currentTheme);
+    emit(LoadedState(currentTheme));
   }
 }
