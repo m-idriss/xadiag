@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xadiag/models/theme_model.dart';
 import '../theme.dart';
 
 class ThemePage extends StatelessWidget {
@@ -7,12 +8,12 @@ class ThemePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeData>(
-      builder: (context, theme) {
+    return BlocBuilder<ThemeCubit, ThemeModel>(
+      builder: (context, state) {
         return MaterialApp(
-          theme: theme,
+          theme: state.themeData,
           debugShowCheckedModeBanner: false,
-          home: ThemeView(),
+          home: const ThemeView(),
         );
       },
     );

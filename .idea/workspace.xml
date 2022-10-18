@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="136ec8bc-746a-4367-9579-043b6369101d" name="Changes" comment="" />
+    <list default="true" id="136ec8bc-746a-4367-9579-043b6369101d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/theme/default_light.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme/cubit/theme_cubit.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme/view/theme_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/view/theme_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme/view/theme_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/view/theme_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme_observer.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2GAJI4kmcr18kuH2Aaabl82drra" />
   <component name="ProjectView">
@@ -41,6 +54,7 @@
       <workItem from="1665937288211" duration="1000" />
       <workItem from="1666061445160" duration="760000" />
       <workItem from="1666062279460" duration="300000" />
+      <workItem from="1666113065339" duration="6000" />
     </task>
     <servers />
   </component>
@@ -52,5 +66,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

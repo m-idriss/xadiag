@@ -1,48 +1,13 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:json_theme/json_theme.dart';
+import '../../models/models.dart';
 import '../theme.dart';
 
 class ThemeView extends StatelessWidget {
-  ThemeView({Key? key}) : super(key: key);
-
-  final List themeList = [
-    {
-      'title': 'Violet clair',
-      'color': Colors.purple,
-      'brightness': Brightness.light,
-      'name': 'default_light',
-    },
-    {
-      'title': 'Violet sombre',
-      'color': Colors.black,
-      'brightness': Brightness.dark,
-      'name': 'default_dark',
-    },
-    {
-      'title': 'blue sombre',
-      'color': Colors.blue,
-      'brightness': Brightness.light,
-      'name': 'default_light',
-    },
-  ];
-
-  static final Map<String, Future<ThemeData>> _themeMap = {
-    "default_light": getMap("default_light"),
-    "default_dark": getMap("default_dark"),
-  };
-
-  static Future<ThemeData> getMap(String name) async {
-    final themeStr = await rootBundle.loadString("assets/theme/$name.json");
-    final themeJson = jsonDecode(themeStr);
-    return ThemeDecoder.decodeThemeData(themeJson) ?? ThemeData.light();
-  }
+  const ThemeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<ThemeModel> themeList = context.read<ThemeCubit>().themes;
     return Scaffold(
       appBar: AppBar(title: const Text('Bloc Theme')),
       body: GridView.builder(
@@ -55,13 +20,13 @@ class ThemeView extends StatelessWidget {
           childAspectRatio: 2,
         ),
         itemBuilder: (context, index) {
-          Future<ThemeData>? item = _themeMap[themeList[index]['name']];
+          ThemeModel item = themeList[index];
           return Card(
-            color: Colors.white54,
+            color: item.themeData.primaryColor,
             child: InkWell(
               onTap: () async {
                 context.read<ThemeCubit>().changeTheme(
-                      await item ?? ThemeData.light(),
+                      item,
                     );
               },
               child: Column(
@@ -69,12 +34,12 @@ class ThemeView extends StatelessWidget {
                 children: [
                   Expanded(child: Container()),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10, bottom: 7),
-                    child: Text(themeList[index]['title']),
-                  ),
+                      padding: const EdgeInsets.only(left: 10, bottom: 7),
+                      child: Text(item.name,
+                          style: item.themeData.textTheme.bodyText2)),
                   Container(
                     height: 25,
-                    color: Colors.white54,
+                    color: item.themeData.focusColor,
                   )
                 ],
               ),

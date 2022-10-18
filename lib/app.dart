@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'models/models.dart';
 import 'theme/theme.dart';
 
 class ThemeApp extends StatelessWidget {
-  final ThemeData theme;
+  final ThemeModel themeModel;
   const ThemeApp({
     super.key,
-    required this.theme,
+    required this.themeModel,
   });
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ThemeCubit(),
+      create: (context) => ThemeCubit(repository: ThemeRepository()),
       child: const ThemePage(),
     );
   }
