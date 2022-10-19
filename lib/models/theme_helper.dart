@@ -31,3 +31,6 @@ final ThemeModel initialThemeLight =
 
 final ThemeModel initialThemeDark =
     ThemeModel(name: "default_dark", themeData: ThemeData.dark());
+
+bool isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;

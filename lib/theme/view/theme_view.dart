@@ -7,41 +7,38 @@ class ThemeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ThemeModel> themeList = context.read<ThemeCubit>().themes;
+    List<ThemeModel> themeList = context.read<ThemeCubit>().getLightThemes();
     return Scaffold(
-      appBar: AppBar(title: const Text('Bloc Theme')),
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        itemCount: themeList.length,
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          childAspectRatio: 2,
+      appBar: AppBar(
+        title: const Text('Bloc Theme'),
+        actions: [
+          Switch(
+            value: isDark(context),
+            onChanged: (val) async {
+              context.read<ThemeCubit>().changeBrigthness(val);
+            },
+          )
+        ],
+      ),
+      body: ListView.builder(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20,
         ),
+        itemCount: themeList.length,
         itemBuilder: (context, index) {
-          ThemeModel item = themeList[index];
+          ThemeModel themeModelIdem = themeList[index];
           return Card(
-            color: item.themeData.primaryColor,
+            color: themeModelIdem.themeData.primaryColor,
             child: InkWell(
               onTap: () async {
                 context.read<ThemeCubit>().changeTheme(
-                      item,
+                      themeModelIdem,
+                      isDark(context),
                     );
               },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: Container()),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 10, bottom: 7),
-                      child: Text(item.name,
-                          style: item.themeData.textTheme.bodyText2)),
-                  Container(
-                    height: 25,
-                    color: item.themeData.focusColor,
-                  )
-                ],
+              child: ListTile(
+                title: Text(themeModelIdem.name),
               ),
             ),
           );
