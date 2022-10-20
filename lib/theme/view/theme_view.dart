@@ -11,56 +11,63 @@ class ThemeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Theme Preview'),
-        actions: [
-          Row(
-            children: [
-              Switch(
-                value: isDark(context),
-                onChanged: (val) async {
-                  context.read<ThemeCubit>().changeBrigthness(val);
-                },
-              )
-            ],
-          ),
-        ],
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
-        ),
-        itemCount: themeList.length,
-        itemBuilder: (context, index) {
-          ThemeModel themeModelIdem = themeList[index];
-          return Card(
-            color: themeModelIdem.themeData.primaryColor,
-            child: InkWell(
-              onTap: () async {
-                context.read<ThemeCubit>().changeTheme(
-                      themeModelIdem,
-                      isDark(context),
-                    );
-              },
-              child: ListTile(
-                title: Text(themeModelIdem.name),
-              ),
-            ),
-          );
-        },
-      ),
+      body: _body(themeList),
       drawer: _Drawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const DemoPage()));
-        },
-        child: const Icon(
-          Icons.open_in_new,
-          color: Colors.white,
-        ),
-      ),
       bottomNavigationBar: _BottomNavigationBar(),
     );
+  }
+
+  Builder _body(List<ThemeModel> themeList) {
+    return Builder(builder: (context) {
+      return Column(children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: ElevatedButton.icon(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const DemoPage()));
+            },
+            icon: const Icon(Icons.airplanemode_active),
+            label: const Text('Voyage'),
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            itemCount: themeList.length,
+            itemBuilder: (context, index) {
+              ThemeModel themeModelIdem = themeList[index];
+              return Card(
+                color: themeModelIdem.themeData.primaryColor,
+                child: InkWell(
+                  onTap: () async {
+                    context.read<ThemeCubit>().changeTheme(
+                          themeModelIdem,
+                          isDark(context),
+                        );
+                  },
+                  child: ListTile(
+                    title: Text(themeModelIdem.name),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        SwitchListTile(
+          title: const Text('Lights'),
+          value: isDark(context),
+          onChanged: (val) async {
+            context.read<ThemeCubit>().changeBrigthness(val);
+          },
+          secondary: const Icon(Icons.lightbulb_outline),
+        ),
+      ]);
+    });
   }
 }
 
@@ -94,6 +101,22 @@ class _Drawer extends StatelessWidget {
           const ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
+          ),
+          const AboutListTile(
+            // <-- SEE HERE
+            icon: Icon(
+              Icons.info,
+            ),
+            applicationIcon: Icon(
+              Icons.local_play,
+            ),
+            applicationName: 'My Cool App',
+            applicationVersion: '1.0.25',
+            applicationLegalese: '© 2019 Company',
+            aboutBoxChildren: [
+              ///Content goes here...
+            ],
+            child: Text('About app'),
           ),
         ],
       ),
