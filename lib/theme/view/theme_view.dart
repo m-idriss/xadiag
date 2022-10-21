@@ -13,7 +13,7 @@ class ThemeView extends StatelessWidget {
         title: const Text('Theme Preview'),
       ),
       body: _body(themeList),
-      drawer: _Drawer(),
+      endDrawer: _Drawer(),
       bottomNavigationBar: _BottomNavigationBar(),
     );
   }
