@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xadiag/theme/view/drawer_view.dart';
 import '../../models/models.dart';
 import '../theme.dart';
+import 'bottom_nav_view.dart';
 
 class ThemeView extends StatelessWidget {
   const ThemeView({Key? key}) : super(key: key);
@@ -13,8 +15,8 @@ class ThemeView extends StatelessWidget {
         title: const Text('Theme Preview'),
       ),
       body: _body(themeList),
-      endDrawer: _Drawer(),
-      bottomNavigationBar: _BottomNavigationBar(),
+      endDrawer: const DrawerView(),
+      bottomNavigationBar: const BottomNavigationWidget(),
     );
   }
 
@@ -68,89 +70,5 @@ class ThemeView extends StatelessWidget {
         ),
       ]);
     });
-  }
-}
-
-class _Drawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-            ),
-            child: const Text(
-              'Drawer header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
-          ),
-          const ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
-          ),
-          const ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
-          ),
-          const ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
-          const AboutListTile(
-            // <-- SEE HERE
-            icon: Icon(
-              Icons.info,
-            ),
-            applicationIcon: Icon(
-              Icons.local_play,
-            ),
-            applicationName: 'My Cool App',
-            applicationVersion: '1.0.25',
-            applicationLegalese: '© 2019 Company',
-            aboutBoxChildren: [
-              ///Content goes here...
-            ],
-            child: Text('About app'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _BottomNavigationBar extends StatefulWidget {
-  @override
-  _BottomNavigationBarState createState() => _BottomNavigationBarState();
-}
-
-class _BottomNavigationBarState extends State<_BottomNavigationBar> {
-  int _currIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: _currIndex,
-      onTap: (index) => setState(() => _currIndex = index),
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.business),
-          label: 'Business',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.school),
-          label: 'School',
-        ),
-      ],
-    );
   }
 }
