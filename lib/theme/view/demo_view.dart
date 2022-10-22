@@ -1,22 +1,19 @@
-import 'package:flutter/material.dart';
+import 'bottom_nav_view.dart';
+import 'drawer_view.dart';
+import '../../models/models.dart';
 
-class DemoPage extends StatelessWidget {
-  const DemoPage({Key? key}) : super(key: key);
+class DemoView extends StatelessWidget {
+  const DemoView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Voyage Thailande"),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.bookmark_border,
-            ),
-            onPressed: () {},
-          )
-        ],
+        automaticallyImplyLeading: false,
       ),
+      endDrawer: const DrawerView(),
+      bottomNavigationBar: const BottomNavigationWidget(),
       body: SingleChildScrollView(
           child: Column(
         children: const [
@@ -36,8 +33,7 @@ class ImageSection extends StatelessWidget {
   const ImageSection({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-        'https://drissas.com/wp-content/uploads/2021/08/photo_thailande.jpeg');
+    return Image.asset("assets/picture/photo_thailande.jpeg");
   }
 }
 
@@ -156,13 +152,11 @@ class HotelSection extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-                'https://drissas.com/wp-content/uploads/2021/08/photo_thailande_1.jpeg'),
+            child: Image.asset("assets/picture/photo_thailande_1.jpeg"),
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-                'https://drissas.com/wp-content/uploads/2021/08/photo_thailande_2.jpeg'),
+            child: Image.asset("assets/picture/photo_thailande_2.jpeg"),
           ),
         ],
       ),

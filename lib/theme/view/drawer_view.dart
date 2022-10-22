@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xadiag/theme/view/theme_page.dart';
 
 class DrawerView extends StatelessWidget {
   const DrawerView({super.key});
@@ -29,10 +30,15 @@ class DrawerView extends StatelessWidget {
             leading: Icon(Icons.account_circle),
             title: Text('Profile'),
           ),
-          const ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
+          ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThemePage()),
+                );
+              }),
           const AboutListTile(
             // <-- SEE HERE
             icon: Icon(

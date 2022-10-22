@@ -14,9 +14,9 @@ class ThemeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Theme Preview'),
       ),
-      body: _body(themeList),
       endDrawer: const DrawerView(),
       bottomNavigationBar: const BottomNavigationWidget(),
+      body: _body(themeList),
     );
   }
 
@@ -25,13 +25,17 @@ class ThemeView extends StatelessWidget {
       return Column(children: [
         Padding(
           padding: const EdgeInsets.only(top: 20.0),
-          child: ElevatedButton.icon(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const DemoPage()));
-            },
-            icon: const Icon(Icons.airplanemode_active),
-            label: const Text('Voyage'),
+          child: SizedBox(
+            height: 40,
+            width: 150,
+            child: ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const DemoView()));
+              },
+              icon: const Icon(Icons.airplanemode_active),
+              label: const Text('Voyage'),
+            ),
           ),
         ),
         Expanded(
@@ -43,17 +47,21 @@ class ThemeView extends StatelessWidget {
             itemCount: themeList.length,
             itemBuilder: (context, index) {
               ThemeModel themeModelIdem = themeList[index];
-              return Card(
-                color: themeModelIdem.themeData.primaryColor,
-                child: InkWell(
-                  onTap: () async {
-                    context.read<ThemeCubit>().changeTheme(
-                          themeModelIdem,
-                          isDark(context),
-                        );
-                  },
-                  child: ListTile(
-                    title: Text(themeModelIdem.name),
+              return SizedBox(
+                height: 60,
+                child: Card(
+                  color: themeModelIdem.themeData.primaryColor,
+                  child: InkWell(
+                    onTap: () async {
+                      context.read<ThemeCubit>().changeTheme(
+                            themeModelIdem,
+                            isDark(context),
+                          );
+                    },
+                    child: ListTile(
+                      title: Text(themeModelIdem.name),
+                      style: ListTileTheme.of(context).style,
+                    ),
                   ),
                 ),
               );
