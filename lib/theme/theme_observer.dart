@@ -1,4 +1,4 @@
-import 'models.dart';
+import '../models/models.dart';
 import 'dart:developer' as developer;
 
 class ThemeBlocObserver extends BlocObserver {

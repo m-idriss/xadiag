@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xadiag/theme/view/theme_page.dart';
+import 'package:xadiag/page/theme_page.dart';
 
 class DrawerView extends StatelessWidget {
   const DrawerView({super.key});

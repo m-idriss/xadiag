@@ -1,4 +1,4 @@
-import 'models.dart';
+import '../models/models.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit({required this.repository}) : super(InitialState()) {

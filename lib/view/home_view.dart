@@ -1,6 +1,6 @@
 import 'bottom_nav_view.dart';
 import 'drawer_view.dart';
-import '../../models/models.dart';
+import '../models/models.dart';
 
 class DemoView extends StatelessWidget {
   const DemoView({Key? key}) : super(key: key);

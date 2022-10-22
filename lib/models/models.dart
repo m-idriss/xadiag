@@ -1,7 +1,7 @@
-export 'theme_model.dart';
-export 'theme_state.dart';
-export 'theme_helper.dart';
-export 'theme_repository.dart';
+export '../theme/theme_model.dart';
+export '../theme/theme_state.dart';
+export '../theme/theme_helper.dart';
+export '../theme/theme_repository.dart';
 
 export 'dart:convert';
 

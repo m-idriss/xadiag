@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xadiag/theme/view/home_page.dart';
+import 'package:xadiag/page/home_page.dart';
 import 'models/models.dart';
 import 'theme/theme.dart';
 

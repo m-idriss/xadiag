@@ -1,4 +1,4 @@
-import 'models.dart';
+import '../models/models.dart';
 
 abstract class ThemeState extends Equatable {}
 

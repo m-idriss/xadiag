@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xadiag/theme/view/drawer_view.dart';
-import '../../models/models.dart';
-import '../theme.dart';
+import 'package:xadiag/view/drawer_view.dart';
+import '../models/models.dart';
+import '../theme/theme.dart';
 import 'bottom_nav_view.dart';
 
 class ThemeView extends StatelessWidget {

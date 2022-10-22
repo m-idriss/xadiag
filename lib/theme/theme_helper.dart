@@ -1,4 +1,4 @@
-import 'models.dart';
+import '../models/models.dart';
 
 Future<List<ThemeModel>> computeThemeMapFromAssets() async {
   final manifestContent = await rootBundle.loadString('AssetManifest.json');

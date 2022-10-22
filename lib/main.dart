@@ -1,6 +1,6 @@
 import 'app.dart';
 import 'models/models.dart';
-import 'models/theme_observer.dart';
+import 'theme/theme_observer.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

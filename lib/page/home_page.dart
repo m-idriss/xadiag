@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xadiag/models/theme_state.dart';
-import '../theme.dart';
+import '../theme/theme.dart';
+import '../theme/theme_state.dart';
 
-class ThemePage extends StatelessWidget {
-  const ThemePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +14,19 @@ class ThemePage extends StatelessWidget {
           return MaterialApp(
             theme: state.props.first.themeData,
             debugShowCheckedModeBanner: false,
-            home: const ThemeView(),
+            home: const DemoView(),
           );
         } else if (state is ErrorState) {
           return MaterialApp(
             theme: state.props.first.themeData,
             debugShowCheckedModeBanner: false,
-            home: const ThemeView(),
+            home: const DemoView(),
           );
         } else if (state is LoadedState) {
           return MaterialApp(
             theme: state.props.first.themeData,
             debugShowCheckedModeBanner: false,
-            home: const ThemeView(),
+            home: const DemoView(),
           );
         } else {
           return Container();
